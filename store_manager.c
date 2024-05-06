@@ -13,7 +13,6 @@
 #include <sys/wait.h>
 
 #define MAX_PRODUCTS 5
-#define MAX_OPERATIONS 500
 
 // Product Information
 typedef struct {
@@ -24,7 +23,7 @@ typedef struct {
 // Operation Structure
 typedef struct {
     int product_id;
-    int type;  // 0 = PURCHASE, 1 = SALE
+    int op;  // 0 = PURCHASE, 1 = SALE
     int units;
 } operation;
 
@@ -123,7 +122,7 @@ int main(int argc, const char *argv[]) {
             fclose(file);
             return EXIT_FAILURE;
         }
-        operations[i].type = (strcmp(op_type, "PURCHASE") == 0) ? 0 : 1;
+        operations[i].op = (strcmp(op_type, "PURCHASE") == 0) ? 0 : 1;
     }
     fclose(file);
 
