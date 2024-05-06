@@ -57,7 +57,7 @@ void *producer_thread(void *arg) {
     for (int i = params->start; i < params->end; i++) {
         element *ele = malloc(sizeof(element));
         ele->product = params->operations[i].product_id;
-        ele->op = params->operations[i].type;
+        ele->op = params->operations[i].op;
         ele->units = params->operations[i].units;
         queue_put(params->buffer, ele);
     }
